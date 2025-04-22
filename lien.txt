@@ -1,0 +1,3 @@
+http://localhost/mon_projet/immigration.php Pour ouvrir le lien de mon site). Mais il faudra prealablement activer Apace et MySQL dans XAMPP Panel Control
+
+http://localhost/phpmyadmin  (Pour acceder  a ma base de donnees)

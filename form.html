@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Soumettre des documents</title>
+  <style>
+    body { font-family: Arial; background: #f0f2f5; padding: 60px; }
+    .container {
+      background: #fff; max-width: 500px; margin: auto; padding: 70px;
+      border-radius: 8px; box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    h2 { text-align: center; color: #333; }
+    input[type=file] { display: none; }
+    .btn-add {
+      background: #007BFF; color: white; padding: 10px 15px;
+      border: none; border-radius: 5px; cursor: pointer;
+    }
+    .btn-add:hover { background: #0056b3; }
+    ul#fichier-list {
+      margin-top: 20px; list-style: none; padding: 0;
+    }
+    ul#fichier-list li {
+      background: #f8f9fa; margin-bottom: 8px;
+      padding: 10px; border-radius: 5px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .supprimer-btn {
+      background: #dc3545; color: white; border: none;
+      border-radius: 5px; padding: 5px 10px; cursor: pointer;
+    }
+    .supprimer-btn:hover { background: #c82333; }
+    .submit-btn {
+      margin-top: 20px; width: 100%;
+      padding: 10px; background: #28a745;
+      color: white; border: none; border-radius: 5px;
+      font-weight: bold; cursor: pointer;
+    }
+    .submit-btn:hover { background: #218838; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>📤 Ajouter plusieurs documents</h2>
+
+    <form id="uploadForm" method="POST" enctype="multipart/form-data">
+      <input type="file" id="fichier-input" multiple accept=".pdf,.doc,.docx,.jpg,.jpeg">
+      <button type="button" class="btn-add" onclick="document.getElementById('fichier-input').click()">➕ Ajouter des fichiers</button>
+      
+      <ul id="fichier-list"></ul>
+
+      <input type="submit" class="submit-btn" value="📨 Téléverser les documents">
+    </form>
+  </div>
+
+  <script>
+    const input = document.getElementById('fichier-input');
+    const list = document.getElementById('fichier-list');
+    const form = document.getElementById('uploadForm');
+
+    let fichiers = [];
+
+    input.addEventListener('change', () => {
+      for (const fichier of input.files) {
+        if (!isValide(fichier)) continue;
+        fichiers.push(fichier);
+      }
+      input.value = "";
+      afficherListe();
+    });
+
+    function afficherListe() {
+      list.innerHTML = "";
+      fichiers.forEach((fichier, index) => {
+        const li = document.createElement("li");
+        li.innerHTML = `
+          ${fichier.name} (${(fichier.size / 1024 / 1024).toFixed(2)} Mo)
+          <button type="button" class="supprimer-btn" onclick="supprimerFichier(${index})">❌</button>
+        `;
+        list.appendChild(li);
+      });
+    }
+
+    function supprimerFichier(index) {
+      fichiers.splice(index, 1);
+      afficherListe();
+    }
+
+    function isValide(file) {
+      const ext = file.name.split('.').pop().toLowerCase();
+      const autorises = ['pdf', 'doc', 'docx', 'jpg', 'jpeg'];
+      if (!autorises.includes(ext)) {
+        alert(`❌ Format non autorisé : ${file.name}`);
+        return false;
+      }
+      if (file.size > 4 * 1024 * 1024) {
+        alert(`❌ Fichier trop volumineux (> 4 Mo) : ${file.name}`);
+        return false;
+      }
+      return true;
+    }
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      if (fichiers.length === 0) {
+        alert("Veuillez ajouter au moins un fichier.");
+        return;
+      }
+
+      const formData = new FormData();
+      fichiers.forEach((fichier) => {
+        formData.append("fichiers[]", fichier);
+      });
+
+      fetch("upload.php", {
+        method: "POST",
+        body: formData
+      })
+      .then(res => res.text())
+      .then(msg => {
+        alert("✅ Téléversement terminé !");
+        document.body.innerHTML = msg;
+      })
+      .catch(err => {
+        alert("❌ Erreur lors du téléversement");
+        console.error(err);
+      });
+    });
+  </script>
+</body>
+</html>

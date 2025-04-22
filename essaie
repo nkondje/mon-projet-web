@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrousel avec commentaires</title>
+    <style>
+
+        /* Style du carrousel */
+.carousel-container {
+    position: relative;
+    width: 600px;
+    height: 350px;
+    margin: 20px auto;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
+    background: #fff;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 1s ease-in-out;
+}
+
+.carousel-item {
+    display: none; /* Cache toutes les images par défaut */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+.carousel-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.carousel-comment {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.carousel-comment a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.carousel-comment a:hover {
+    text-decoration: underline;
+}
+</style>
+
+</head>
+<body>
+
+    <div class="carousel-container">
+        <div class="carousel-track">
+            <!-- Image 1: Voiture -->
+            <div class="carousel-item">
+                <img src="images/voiture.png" alt="Voiture GOTOCANADA">
+                <div class="carousel-comment">
+                    <a href="voiture.html" target="_blank">Cliquez ici pour en savoir plus sur Voiture GOTOCANADA</a>
+                </div>
+            </div>
+            
+            <!-- Image 2: Arrima -->
+            <div class="carousel-item">
+                <img src="images/arrima-blue.png" alt="Arrima">
+                <div class="carousel-comment">
+                    <a href="arrima.html" target="_blank">Cliquez ici pour en savoir plus sur Arrima</a>
+                </div>
+            </div>
+
+            <!-- Image 3: TEF/TCF -->
+            <div class="carousel-item">
+                <img src="images/download.png" alt="TEF/TCF">
+                <div class="carousel-comment">
+                    <a href="tef-tcf.html" target="_blank">Cliquez ici pour en savoir plus sur le TEF/TCF</a>
+                </div>
+            </div>
+
+            <!-- Image 4: Entrée Express -->
+            <div class="carousel-item">
+                <img src="images/EntreeExpress.jfif" alt="Entrée Express">
+                <div class="carousel-comment">
+                    <a href="entreeexpress.html" target="_blank">Cliquez ici pour en savoir plus sur Entrée Express</a>
+                </div>
+            </div>
+
+            <!-- Image 5: Partir en Famille -->
+            <div class="carousel-item">
+                <img src="images/Familly.jfif" alt="Famille au Canada">
+                <div class="carousel-comment">
+                    <a href="famille.html" target="_blank">Cliquez ici pour en savoir plus sur Partir en Famille</a>
+                </div>
+            </div>
+
+            <!-- Image 6: Réunion Familiale -->
+            <div class="carousel-item">
+                <img src="images/reunion.jfif" alt="Réunion familiale">
+                <div class="carousel-comment">
+                    <a href="reunion.html" target="_blank">Cliquez ici pour en savoir plus sur Réunion Familiale</a>
+                </div>
+            </div>
+
+            <!-- Image 7: Reunite Your Family -->
+            <div class="carousel-item">
+                <img src="images/reunitefamily.jfif" alt="Reunite your family">
+                <div class="carousel-comment">
+                    <a href="reunite.html" target="_blank">Cliquez ici pour en savoir plus sur Reunite Your Family</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let index = 0;
+        const items = document.querySelectorAll('.carousel-item');
+        
+        function showNextImage() {
+            items.forEach((item, i) => {
+                item.style.display = 'none'; // Cache toutes les images
+            });
+            index++;
+            if (index >= items.length) index = 0;
+            items[index].style.display = 'block'; // Affiche l'image suivante
+        }
+
+        // Initialiser avec la première image visible
+        showNextImage();
+        setInterval(showNextImage, 5000); // Change d'image toutes les 5 secondes
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoToCanada - Coûts des Services</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: url('images/erable1.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            background: none;
+            padding: 10px;
+            color: white;
+        }
+        .nav-menu {
+            display: flex;
+            gap: 10px;
+        }
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        main {
+            margin-top: 250px;
+            padding: 20px;
+            max-width: 900px;
+            background: white;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 10px;
+        }
+        section {
+            margin-bottom: 20px;
+        }
+        h1, h2 {
+            color: #0055a5;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #e0e0e0;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #003366;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="mobile-version">
+            <p>Vous visitez une version mobile du site gotocanada.com.</p>
+            <a href="immigration.php">Pour visiter le site régulier, S.V.P. cliquez ici.</a>
+        </div>
+        <div class="presentation"><a href="#cout"><h1>Coûts des services - GoToCanada</h1></a></div>
+        <nav>
+            <div class="nav-menu">
+                <h1><a href="immigration.php">Accueil</a></h1>
+            </div>
+            <div class="espace-client">Espace client</div>
+        </nav>
+    </header>
+    <main>
+        <section class="gratuit">
+            <h1>Services gratuits</h1>
+            <p>Chez <strong>GoToCanada</strong>, nous croyons en un accès équitable à l'information. C'est pourquoi notre service de base d'accompagnement pour l'immigration est <strong>entièrement gratuit</strong>. Cela inclut :</p>
+            <ul>
+                <li>Réponses à vos questions générales sur les procédures</li>
+                <li>Accès au rapport initial d’évaluation</li>
+                <li>Orientation vers les bons programmes d’immigration</li>
+            </ul>
+        </section>
+
+        <section class="payant">
+            <h2>Services avec frais associés</h2>
+            <p>Certains services complémentaires sont proposés à des coûts très abordables pour faciliter votre intégration :</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th>Description</th>
+                        <th>Coût (CAD)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Formation sur le processus d'immigration</td>
+                        <td>Session de 2 heures sur les étapes à suivre et les erreurs à éviter</td>
+                        <td>25 $</td>
+                    </tr>
+                    <tr>
+                        <td>Aide à la rédaction de CV canadien</td>
+                        <td>Modèle professionnel et adaptation à votre profil</td>
+                        <td>15 $</td>
+                    </tr>
+                    <tr>
+                        <td>Location de véhicule à l’arrivée</td>
+                        <td>Service optionnel pour faciliter vos déplacements</td>
+                        <td>30 $ / jour</td>
+                    </tr>
+                    <tr>
+                        <td>Recherche de logement</td>
+                        <td>Assistance pour trouver un logement temporaire ou permanent</td>
+                        <td>50 $</td>
+                    </tr>
+                    <tr>
+                        <td>Accompagnement à l'installation</td>
+                        <td>Accueil à l’aéroport et assistance les 2 premiers jours</td>
+                        <td>40 $</td>
+                    </tr>
+                    <tr>
+                        <td>Traduction de documents officiels</td>
+                        <td>Traduction certifiée de documents nécessaires (par page)</td>
+                        <td>20 $</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <footer>
+        <p>📋 Tous les tarifs sont en dollars canadiens et sujets à changement. Contactez-nous pour un devis personnalisé.</p>
+        <p>© 2024 Go To Canada - Tous droits réservés.</p>
+    </footer>
+</body>
+</html>
